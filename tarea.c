@@ -15,26 +15,41 @@ int main(){
     }
     }while (n<1);
 
-    float coord[n][2];
-    int f,c;
-    
-    for (f=0; f<n; f++){
-        for (c=0; c<2; c++){    
-            &coord[i][j]=rand()%n*2;  
-        }     
-    }    
+    int coord[n][2],f,c;
+    int tipo;
 
-    for (f=0; f<n; f++){
-        for (c=0; c<2; c++){
-            printf("Digite coordenadas [%d][%d]: ", i, j);         
-            scanf("%d", &coord[i][j]);   
-        }     
-    }
+    printf("Ingrese el tipo de llenado que desee: \n 1.Aleatorio \n 2.Manual");
+    scanf("%d",&tipo);
+
+    switch (tipo){
+    case 1:
+        for (f=0; f<n; f++){
+            for (c=0; c<2; c++){    
+                coord[f][c]=rand()%n*2;  
+            }     
+        }
+        break;
+
+    case 2:
+        for (f=0; f<n; f++){
+            for (c=0; c<2; c++){
+                printf("Digite coordenadas [%d][%d]: ", f, c);
+                scanf("%d", &coord[f][c]);
+            }     
+        }
+        break;
+        
+    default:
+        printf("Ingrese valor válido!");
+        break;
+    }   
+
+    //Imprime los valores
 
     for (f=0; f<n; f++){
         printf("%d. ", cont++);
         for (c=0; c<2; c++){
-            printf("[%d]",coord[i][j]);
+            printf("[%d]",coord[f][c]);
         }
         printf("\n");       
     }
